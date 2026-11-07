@@ -58,9 +58,11 @@ pdm-database/
 
 ## 如何运行
 
-环境：MySQL 8.0.16+（`CHECK` 约束需要这个版本以上）；图形界面用老师教学资料里的 **Navicat Premium 17 中文绿色版**（Workbench 亦可，两者只是客户端，SQL 无需改动）；Python 3.x 仅用于自检脚本，无第三方依赖。
+环境：MySQL **8.0.16+**（`CHECK` 约束需要这个版本以上）；图形界面用**本机已装的 MySQL Workbench 8.0**（老师教学资料里的 Navicat 只是另一款客户端，不装也行，SQL 无需改动）；Python 3.x 仅用于自检脚本，无第三方依赖。
 
-> **第一次做数据库设计题？** 先读 [小白从零实验教程](docs/05_小白从零实验教程.md)，它从「怎么读题」讲起，包含 Navicat / Workbench 每一步点哪儿、每段 SQL 为什么这么写、跑出来应该看到什么。老师提供的工具怎么对应到本仓库，见 [老师指定工具对照](docs/06_老师指定工具对照.md)。
+> **本机实测**：MySQL Server **8.0.46** 已装、服务 `MySQL80` 运行中、`3306` 已监听；Workbench 里已保存连接 `Local instance MySQL80`（`localhost:3306` / `root`），双击即可连，不用下载安装。
+>
+> **第一次做数据库设计题？** 先读 [小白从零实验教程](docs/05_小白从零实验教程.md)，它从「怎么读题」讲起，包含 Workbench 每一步点哪儿、每段 SQL 为什么这么写、跑出来应该看到什么。老师提供的工具怎么对应到本仓库，见 [老师指定工具对照](docs/06_老师指定工具对照.md)。
 
 1. 可选，先自检示例数据（不需要连数据库）：
 
@@ -70,7 +72,7 @@ pdm-database/
 
    全部 `[OK]` 且最后 `[PASS]` 才说明 INSERT 数据自洽，尤其是批次供货表的复合外键。
 
-2. 打开 Navicat（右键连接 → 运行 SQL 文件… → 选 `schema.sql`，编码 UTF-8 → 开始），或在 Workbench 里新建查询整体执行。脚本开头会 `DROP` 旧表，可反复运行。
+2. 打开 **MySQL Workbench** → 双击 `Local instance MySQL80` → `File → Open SQL Script...`（`Ctrl + Shift + O`）选 `schema.sql` → 点 **⚡⚡ Execute All**（`Ctrl + Shift + Enter`）。脚本开头会 `DROP` 旧表，可反复运行。
 3. 执行完脚本末尾的查询，查看各组结果（查询 1、2-A/2-B/2-C、3-①/②/③、权限查询）。
 
 > **要交「完整 SQL 源码」**：用 `sql/` 目录，按 [sql/README.md](sql/README.md) 的顺序 `01 → 06` 执行。它把建表、索引、视图、权限、数据插入、业务查询拆成六份，覆盖提交要求里的全部六类代码；`schema.sql` 是 01/05/06 的合并版，两者内容等价。
