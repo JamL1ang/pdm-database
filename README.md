@@ -22,6 +22,14 @@ pdm-database/
 ├── README.md                         本文件
 ├── schema.sql                        一体化脚本：建表 + 示例数据 + 查询
 ├── er_diagram.png                    v1 ER 图（保留作对照）
+├── sql/                              拆分版全套 SQL 源码（提交用，详见 sql/README.md）
+│   ├── README.md                     执行顺序、验证清单、题目映射
+│   ├── 01_schema.sql                 建库 + 18 张表 + 约束
+│   ├── 02_indexes.sql                12 个显式索引
+│   ├── 03_views.sql                  5 个业务视图
+│   ├── 04_privileges.sql             4 账号 + 1 角色 + 授权
+│   ├── 05_seed_data.sql              18 表 / 122 行示例数据
+│   └── 06_business_queries.sql       14 条业务查询
 ├── docs/
 │   ├── 01_需求分析与设计说明.md      题目 1-9 映射、设计决策、范式说明
 │   ├── 02_数据字典.md                18 张表逐字段说明
@@ -62,6 +70,8 @@ pdm-database/
 
 2. 打开 MySQL Workbench，新建查询，整体执行 `schema.sql`。脚本开头会 `DROP` 旧表，可反复运行。
 3. 执行完脚本末尾的查询，查看各组结果（查询 1、2-A/2-B/2-C、3-①/②/③、权限查询）。
+
+> **要交「完整 SQL 源码」**：用 `sql/` 目录，按 [sql/README.md](sql/README.md) 的顺序 `01 → 06` 执行。它把建表、索引、视图、权限、数据插入、业务查询拆成六份，覆盖提交要求里的全部六类代码；`schema.sql` 是 01/05/06 的合并版，两者内容等价。
 
 ## 三类查询（对应题目第 9 条）
 
